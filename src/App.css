@@ -27,6 +27,16 @@ h1 {
   margin-bottom: 50px;
 }
 
+.poke-img {
+  transition: 0.5s;
+  background-size: 300% auto;
+  background-image: linear-gradient(to top left, #a8edea 0%, white 25%, #c2fbf1 51%,  #fed6e3 100%);
+}
+
+.poke-img:hover {
+  background-position: right center;
+}
+
 .poke-info-container {
   position: relative;
 }

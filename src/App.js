@@ -32,7 +32,7 @@ const App = () => {
       return (
         <div className="poke-info-container">
           <div className="poke-name">{pokemon.name}</div>
-          <img key={i} src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`} />
+          <img className="poke-img" key={i} src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`} />
         </div>
       );
     });
@@ -40,7 +40,7 @@ const App = () => {
 
   const filterPokemon = () => {
     return pokemons.filter((poke) => {
-      if(input === null) {
+      if(!input) {
         return poke.name
       } else if(input) {
         return poke.name.includes(input)
