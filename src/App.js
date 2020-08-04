@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 const App = () => {
   const [pokemons, setPokemons] = useState([]);
-  const [input, setInput] = useState(null);
+  const [input, setInput] = useState(undefined);
 
   useEffect(() => {
     fetchPokemon()
@@ -30,12 +29,20 @@ const App = () => {
     let displayPokemons = filterPokemon()
     return displayPokemons.map((pokemon, i) => {
       return (
-        <div className="poke-info-container">
+        <div key={i} className="poke-info-container">
           <div className="poke-name">{pokemon.name}</div>
-          <img className="poke-img" key={i} src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`} />
+          <img className="poke-img" src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`} />
         </div>
       );
     });
+  }
+
+  const displayType = () => {
+    return pokemons.map((pokemon, i) => {
+      return (pokemon.types.map((type,i) => {
+        return (console.log(type.type.name))
+      }))
+    })
   }
 
   const filterPokemon = () => {
@@ -54,9 +61,11 @@ const App = () => {
 
   return (
     <div className="App">
+    {displayType()}
       <div className="header">
         <h1>Pokemon Search</h1>
         <input onChange={handleChange} value={input} placeholder="Search for a Pokemon"></input>
+
       </div>
       <div className="poke-grid">
         {displayPokemon()}
